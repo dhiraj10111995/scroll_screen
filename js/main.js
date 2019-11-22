@@ -14,9 +14,8 @@ $(document).ready(function(){
 		var mobileSlide02Tl = new TimelineMax();
 
 		mobileSlide02Tl
-				    // .fromTo('#phonescr1' , 2, {x:0,autoAlpha:1,rotation:0}, {x:-486,autoAlpha:1,rotation:90})
-
-					.fromTo('.phone-screen_anim-03', 2, {x:0,autoAlpha:1,rotation:0}, {x:-470,autoAlpha:1,rotation:90});
+				    .to('.phone-floater_wrapper', 1, {x:-470,rotation:90})
+					.to('.phone-screen_anim-03', 1, {autoAlpha: 1}, "-=1");;
 
 
 			return mobileSlide02Tl;
@@ -28,8 +27,8 @@ $(document).ready(function(){
 		var mobileSlide03Tl = new TimelineMax();
 
 		mobileSlide03Tl
-			
-			.fromTo('.phone-screen_anim-04', 1, {y: '+=38', autoAlpha: 0}, {y:'0', autoAlpha: 1})
+			.to('.phone-floater_wrapper', 1, {x:0, rotation:0})
+			.to('.phone-screen_anim-04', 1, {autoAlpha: 1}, "-=1")
 
 			
 
@@ -59,25 +58,25 @@ $(document).ready(function(){
 		controller = new ScrollMagic.Controller();
 
 
-	// Pin Mobile Screen
+		// Pin Mobile Screen
 		var pinMobile = new ScrollMagic.Scene({
 			triggerElement: '#phone-floater-container',
 			triggerHook: 0,
 			duration: '1600'
 		})
 		.setPin('#phone-floater-container .pin-wrapper', {pushFollowers: false})
-		// .addIndicators()
+		.addIndicators()
 		.addTo(controller);
 
 		// Pin Mobile Scene 1
-		var pinScene01 = new ScrollMagic.Scene({
-			triggerElement: '#phone-floater-container',
-			triggerHook: 0.4,
-			duration: '100'
-		})
-		.setTween(getMobileSlide01Tl())
+		// var pinScene01 = new ScrollMagic.Scene({
+		// 	triggerElement: '#phone-floater-container',
+		// 	triggerHook: 0,
+		// 	duration: '0'
+		// })
+		// .setTween(getMobileSlide01Tl())
 		// .addIndicators()
-		.addTo(controller);
+		// .addTo(controller);
 
 		// Pin Mobile Scene 2
 		var pinScene02 = new ScrollMagic.Scene({
@@ -87,7 +86,7 @@ $(document).ready(function(){
 			duration: '0'
 		})
 		.setTween(getMobileSlide02Tl())
-		// .addIndicators()
+		.addIndicators()
 		.addTo(controller);
 
 
@@ -96,10 +95,10 @@ $(document).ready(function(){
 			triggerElement: '#phone-floater-container',
 			triggerHook: 0,
 			offset: 1250,
-			duration: '200'
+			duration: '0'
 		})
 		.setTween(getMobileSlide03Tl())
-		// .addIndicators()
+		.addIndicators()
 		.addTo(controller);
 
 	}
